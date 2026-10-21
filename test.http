@@ -1,0 +1,14 @@
+GET http://127.0.0.1:5000/api/buku
+
+###
+POST http://127.0.0.1:5000/api/buku
+Content-Type: application/json
+
+{
+  "judul": "Pemrograman Python",
+  "pengarang": "Guido van Rossum",
+  "penerbit": "Tech Press",
+  "tahun_terbit": 2024,
+  "stok": 10,
+  "id_kategori": 1
+}
