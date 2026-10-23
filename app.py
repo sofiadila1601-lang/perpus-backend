@@ -1,16 +1,14 @@
 import os
-from flask import Flask, request, jsonify
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from dotenv import load_dotenv
-
-load_dotenv()
 
 app = Flask(__name__)
 
-# Tulis URL Supabase langsung di string tanpa os.getenv
-app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL", "postgresql+pg8000://postgres.rbslkxfbuokkprqtkqdf:adilasofi1601@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres")
-db = SQLAlchemy(app)
+# Mengambil DATABASE_URL langsung dari Environment Variable Vercel
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+db = SQLAlchemy(app)
 # ==================== MODEL DATABASE ====================
 
 class Kategori(db.Model):
